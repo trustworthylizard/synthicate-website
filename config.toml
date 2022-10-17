@@ -1,0 +1,10 @@
+baseURL = 'http://modularsynthicate.com/'
+languageCode = 'en-us'
+title = 'Modular Synthicate'
+
+
+[outputs]
+    home = ["HTML", "JSON"]
+[taxonomies]
+    tag = "tags"
+    category = "categories"

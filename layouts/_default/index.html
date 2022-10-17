@@ -1,0 +1,48 @@
+
+
+{{ define "main" }}
+<head>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+{{.Content}}
+{{- partial "hero.html" . -}}
+<h2>Latest Modules</h2>
+<div class="grid">
+  {{ range ( where .Site.RegularPages "Type" "modules" | first 3 ) }}
+  <div class="module-card brd-red">
+    <a href="{{.Permalink}}">
+      <div class="card-top1"></div>
+      <h2>{{.Title}}</h2>
+      <p>{{.Description}}</p>
+    </a>
+  </div>
+  {{end}}
+</div>
+<h2>More modules:</h2>
+<div class="grid" style="padding:8px">
+  <a class="btn-1 center" href="/categories">
+    Categories
+  </a>
+  <a class="btn-1 center" href="/search">
+    Search
+</a>
+</div>
+<div class="center">
+{{range ($.Site.GetPage "taxonomyTerm" "categories").Pages }}
+<a href="{{.Permalink}}"><div class="pill">{{.Title}}</div></a>
+{{end}}
+</div>
+<br>
+<h2>Latest Articles</h2>
+<div class="grid">
+  {{ range ( where .Site.RegularPages "Type" "articles" | first 3 ) }}
+  <div class="module-card brd-yellow">
+    <a href="{{.Permalink}}">
+      <div class="card-top1"></div>
+      <h2>{{.Title}}</h2>
+      <p>{{.Description}}</p>
+    </a>
+  </div>
+  {{end}}
+</div>
+{{ end }}
